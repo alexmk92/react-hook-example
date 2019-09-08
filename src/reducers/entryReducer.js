@@ -10,6 +10,7 @@ export const initialEntryState = {
 };
 
 export const entryReducer = (state, action) => {
+    console.log(action, state);
     switch (action.type) {
         case entryTypes.CREATE:
             return {
@@ -24,5 +25,12 @@ export const entryReducer = (state, action) => {
                     }
                 ]
             };
+        case entryTypes.DELETE:
+            return {
+                selected: null,
+                entries: state.entries.filter(item => item.id != action.payload.id)
+            };
+        default:
+            return state;
     }
 };
