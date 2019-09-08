@@ -3,7 +3,7 @@ import { Entry } from "./Entry";
 
 export const EntryList = ({ entries }) => {
     return (
-        <ul>
+        <ul className='w-1/4 float-right'>
             { entries.map(entry => <Entry {...entry} />) }
         </ul>
     );
