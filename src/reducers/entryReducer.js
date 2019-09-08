@@ -2,6 +2,7 @@ export const entryTypes = {
     CREATE: 'create',
     DELETE: 'delete',
     SELECT: 'select',
+    RELOAD: 'reload',
 };
 
 export const initialEntryState = {
@@ -30,6 +31,8 @@ export const entryReducer = (state, action) => {
                 selected: null,
                 entries: state.entries.filter(item => item.id !== action.payload.id)
             };
+        case entryTypes.RELOAD:
+            return action.payload;
         default:
             return state;
     }
