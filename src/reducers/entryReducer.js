@@ -28,7 +28,7 @@ export const entryReducer = (state, action) => {
         case entryTypes.DELETE:
             return {
                 selected: null,
-                entries: state.entries.filter(item => item.id != action.payload.id)
+                entries: state.entries.filter(item => item.id !== action.payload.id)
             };
         default:
             return state;
