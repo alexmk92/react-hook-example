@@ -1,8 +1,8 @@
 import React, { useReducer } from 'react';
 import StateContext, { StateProvider } from "./state/StateContext";
 
-import { Card } from "./components/Card";
-import { entryReducer, entryTypes } from "./reducers/entryReducer";
+import { entryReducer, entryTypes, initialEntryState } from "./reducers/entryReducer";
+import {EntryList} from "./components/EntryList";
 
 // I would normally include a containers directory in this project
 // which would compose the components for a page at a given route
@@ -10,13 +10,15 @@ import { entryReducer, entryTypes } from "./reducers/entryReducer";
 // components directory and compose the components within the
 // master container of the app.
 const App = props => {
-  const [state, dispatch] = useReducer(entryReducer, []);
+  const [entryState, dispatch] = useReducer(entryReducer, initialEntryState);
+
+  const { entries } = entryState;
 
   return (
       <StateProvider>
         <div className="App">
           <button onClick={() => dispatch({ type: entryTypes.CREATE })}>Add</button>
-          { state.map((item) => <Card {...item} />) }
+          <EntryList entries={entries} />
         </div>
       </StateProvider>
   );

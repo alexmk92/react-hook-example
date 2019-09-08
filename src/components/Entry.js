@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Card = ({ id, createdAt, username }) => {
+export const Entry = ({ id, createdAt, username }) => {
     return (
         <div key={id}>
             { username }
