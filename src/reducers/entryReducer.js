@@ -1,12 +1,18 @@
+export const entryTypes = {
+    CREATE: 'create',
+    DELETE: 'delete',
+};
+
 export const entryReducer = (state, action) => {
     switch (action.type) {
-        case 'create':
+        case entryTypes.CREATE:
             return [
                 ...state,
                 {
-                    id: Date.now().getTime(),
+                    id: new Date().getTime(),
                     username: 'AlexMK92',
-                    dob: Date.now()
+                    dob: new Date(),
+                    createdAt: new Date(),
                 }
             ];
     }
