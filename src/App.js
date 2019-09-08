@@ -9,9 +9,9 @@ import { EntryList } from "./components/EntryList";
 // this application is single routed, so I will just use a single
 // components directory and compose the components within the
 // master container of the app.
-const App = () => {
+const App = props => {
     const [entryState, dispatch] = useReducer(entryReducer, initialEntryState);
-    const { entries } = entryState;
+    const { entries, selected } = entryState;
 
     // An empty array for useEffect means there is nothing to subscribe to,
     // in this case we will only try to load when the component mounts.
@@ -23,13 +23,15 @@ const App = () => {
     // Whenever the `entries` value changes, we will persist it to local storage
     // so that we can load between sessions.
     useEffect(() => {
-        localStorage.setItem('entries', JSON.stringify(entries))
-    }, [entries]);
+        localStorage.setItem('entries', JSON.stringify(entryState))
+    }, [selected, entries]);
 
     return (
         <EntryProvider value={dispatch}>
             <div>
-                <button onClick={() => dispatch({ type: entryTypes.CREATE })}>Add</button>
+                <div className='w-3/4'>
+                    <button onClick={() => dispatch({ type: entryTypes.CREATE })}>Add</button>
+                </div>
                 <EntryList entries={entries} />
             </div>
         </EntryProvider>
