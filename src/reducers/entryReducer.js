@@ -33,6 +33,11 @@ export const entryReducer = (state, action) => {
             };
         case entryTypes.RELOAD:
             return action.payload;
+        case entryTypes.SELECT:
+            return {
+                ...state,
+                selected: state.entries.find(item => item.id === action.payload.id)
+            };
         default:
             return state;
     }

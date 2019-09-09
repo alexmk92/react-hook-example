@@ -27,12 +27,20 @@ const App = props => {
     }, [selected, entries]);
 
     return (
-        <EntryProvider value={dispatch}>
-            <div>
-                <div className='w-3/4'>
-                    <button onClick={() => dispatch({ type: entryTypes.CREATE })}>Add</button>
+        <EntryProvider value={{ state: entryState, dispatch }}>
+            <div className='flex h-screen'>
+                <div className='w-2/3 bg-gray-700 h-full flex justify-center items-center'>
+                    <div className='w-2/3 p-6  px-8 bg-white m-auto'>
+                        <input className='w-full p-2 border border-grey-800 my-3' type='text' placeholder='Name...' />
+                        <input className='w-full p-2 border border-grey-800 my-3' type='date' />
+                        <button className='bg-green-500 px-5 py-2 text-white float-right' onClick={() => dispatch({ type: entryTypes.CREATE })}>Create</button>
+                    </div>
                 </div>
-                <EntryList entries={entries} />
+                <div className='w-1/3 bg-gray-400 h-full py-5'>
+                    <h2 className='max-w-lg px-4 text-xl'>Entry History</h2>
+                    <br/>
+                    <EntryList entries={entries} />
+                </div>
             </div>
         </EntryProvider>
     );
