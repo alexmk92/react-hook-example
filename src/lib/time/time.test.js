@@ -27,7 +27,7 @@ it('finds years relative to a day since a date', () => {
 });
 
 it('collates years, months, hours since a date', () => {
-    const { years, months, hours } = Time.yearsMonthsHoursSince(fromDate, toDate);
+    const { years, months, hours } = Time.yearsMonthsDaysHoursSince(fromDate, toDate);
     expect(years).toEqual(1);
     expect(months).toEqual(1);
     expect(hours).toEqual(8);
