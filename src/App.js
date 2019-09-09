@@ -24,6 +24,7 @@ const App = props => {
     // Whenever the `entries` value changes, we will persist it to local storage
     // so that we can load between sessions.
     useEffect(() => {
+        console.log('STATE IS: ', entryState);
         localStorage.setItem('entries', JSON.stringify(entryState))
     }, [selected, entries]);
 
