@@ -3,6 +3,7 @@ import { EntryProvider } from "./state/EntryContext";
 
 import { entryReducer, entryTypes, initialEntryState } from "./reducers/entryReducer";
 import { EntryList } from "./components/EntryList";
+import {NewEntryForm} from "./components/NewEntryForm";
 
 // I would normally include a containers directory in this project
 // which would compose the components for a page at a given route
@@ -30,11 +31,7 @@ const App = props => {
         <EntryProvider value={{ state: entryState, dispatch }}>
             <div className='flex h-screen'>
                 <div className='w-2/3 bg-gray-700 h-full flex justify-center items-center'>
-                    <div className='w-2/3 p-6  px-8 bg-white m-auto'>
-                        <input className='w-full p-2 border border-grey-800 my-3' type='text' placeholder='Name...' />
-                        <input className='w-full p-2 border border-grey-800 my-3' type='date' />
-                        <button className='bg-green-500 px-5 py-2 text-white float-right' onClick={() => dispatch({ type: entryTypes.CREATE })}>Create</button>
-                    </div>
+                    <NewEntryForm />
                 </div>
                 <div className='w-1/3 bg-gray-400 h-full py-5'>
                     <h2 className='max-w-lg px-4 text-xl'>Entry History</h2>

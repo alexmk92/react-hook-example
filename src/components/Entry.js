@@ -1,9 +1,12 @@
 import React, { useContext } from 'react';
 import EntryContext from "../state/EntryContext";
 import { entryTypes } from "../reducers/entryReducer";
+import { getDelta, minutesSince } from "../lib/time";
+import moment from 'moment';
 
-export const Entry = ({ id, createdAt, username }) => {
+export const Entry = ({ id, createdAt, name }) => {
     const { state, dispatch } = useContext(EntryContext);
+    const {minutes} = minutesSince(getDelta({ fromDate: moment(createdAt), toDate: moment()}));
 
     const isActiveClass = (state.selected && state.selected.id === id) ? 'bg-white' : '';
 
@@ -13,7 +16,7 @@ export const Entry = ({ id, createdAt, username }) => {
             onClick={ () => dispatch({ type: entryTypes.SELECT, payload: { id } })}
         >
             <input type='checkbox' checked />
-            <span>{ username }</span>
+            <span>{ name } (created {minutes} minutes ago)</span>
             <button
                 className='bg-red-600 px-5 py-2 text-white float-right'
                 onClick={ () => dispatch({ type: entryTypes.DELETE, payload: { id } }) }>

@@ -19,9 +19,8 @@ export const entryReducer = (state, action) => {
                 entries: [
                     ...state.entries,
                     {
+                        ...action.payload,
                         id: new Date().getTime(),
-                        username: 'AlexMK92',
-                        dob: new Date(),
                         createdAt: new Date(),
                     }
                 ]
