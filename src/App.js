@@ -12,7 +12,7 @@ import {NewEntryForm} from "./components/NewEntryForm";
 // master container of the app.
 const App = props => {
     const [entryState, dispatch] = useReducer(entryReducer, initialEntryState);
-    const { entries, selected } = entryState;
+    const { entries, selected, error } = entryState;
 
     // An empty array for useEffect means there is nothing to subscribe to,
     // in this case we will only try to load when the component mounts.
@@ -30,6 +30,7 @@ const App = props => {
     return (
         <EntryProvider value={{ state: entryState, dispatch }}>
             <div className='flex h-screen'>
+                { error ? <span className='absolute bg-red-500 text-white top-0 w-2/3 py-4 px-4'>{error}</span> : null }
                 <div className='w-2/3 bg-gray-700 h-full flex justify-center items-center'>
                     <NewEntryForm />
                 </div>
