@@ -1,7 +1,7 @@
 import React, { useContext, useRef, useEffect, useState } from 'react';
 import EntryContext from '../state/EntryContext';
 import {entryTypes} from "../reducers/entryReducer";
-import {yearsMonthsHoursSince} from "../lib/time";
+import {yearsMonthsDaysHoursSince} from "../lib/time";
 import moment from 'moment';
 
 export const NewEntryForm = () => {
@@ -42,6 +42,6 @@ export const NewEntryForm = () => {
 };
 
 const currentAge = ({ dob }) => {
-    const { years, months, hours } = yearsMonthsHoursSince(moment(dob), moment());
-    return <span className={!dob ? 'invisible' : ''}>{ years } years, { months } months and { hours } hours old.</span>
+    const { years, months, days, hours } = yearsMonthsDaysHoursSince(moment(dob), moment());
+    return <span className={!dob ? 'invisible' : ''}>{ years } years, { months } months, { days } days and { hours } hours old.</span>
 };
