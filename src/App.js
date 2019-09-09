@@ -29,12 +29,12 @@ const App = props => {
 
     return (
         <EntryProvider value={{ state: entryState, dispatch }}>
-            <div className='flex h-screen'>
-                { error ? <span className='absolute bg-red-500 text-white top-0 w-2/3 py-4 px-4'>{error}</span> : null }
-                <div className='w-2/3 bg-gray-700 h-full flex justify-center items-center'>
+            <div className='md:flex h-screen bg-gray-400'>
+                { error ? <div className='w-screen md:w-2/3 md:absolute bg-red-500 text-white top-0 py-4 px-4'>{error}</div> : null }
+                <div className='w-full md:w-2/3 bg-gray-700 md:h-full md:flex md:justify-center md:items-center'>
                     <NewEntryForm />
                 </div>
-                <div className='w-1/3 bg-gray-400 h-full py-5'>
+                <div className='w-full md:w-1/3 bg-gray-400 md:h-full py-5'>
                     <h2 className='max-w-lg px-4 text-xl'>Entry History</h2>
                     <br/>
                     <EntryList entries={entries} />
