@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import EntryContext from "../state/EntryContext";
 import { entryTypes } from "../reducers/entryReducer";
 
@@ -6,10 +6,6 @@ export const Entry = ({ id, dob, createdAt, name }) => {
     const { state, dispatch } = useContext(EntryContext);
 
     const isActiveClass = (state.selected && state.selected.id === id) ? 'bg-white' : '';
-
-    useEffect(() => {
-        dispatch({ type: entryTypes.SELECT, payload: null })
-    }, [state.entries.length]);
 
     return (
         <div

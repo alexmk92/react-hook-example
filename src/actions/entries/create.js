@@ -8,18 +8,15 @@ export default ({ state, payload }) => {
         };
     }
 
-    const nextEntry = {
-        ...payload,
-        id: new Date().getTime(),
-        createdAt: new Date(),
-    };
-
     return {
         entries: [
             ...state.entries,
-            nextEntry
+            {
+                ...payload,
+                id: new Date().getTime(),
+                createdAt: new Date(),
+            }
         ],
-        error: null,
-        selected: nextEntry
+        error: null
     };
 }
