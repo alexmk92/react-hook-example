@@ -20,6 +20,11 @@ export const NewEntryForm = () => {
         setId(selected ? selected.id : null);
         setDob(selected ? selected.dob : null);
         setName(selected ? selected.name : null);
+
+        if (!selected && nameInput && dateInput) {
+            nameInput.current.value = null;
+            dateInput.current.value = null;
+        }
     }, [selected]);
 
     if (id) {
