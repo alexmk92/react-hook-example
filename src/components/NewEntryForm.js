@@ -22,7 +22,7 @@ export const NewEntryForm = () => {
         setName(selected ? selected.name : null);
 
         if (!selected && nameInput && dateInput) {
-            nameInput.focus();
+            nameInput.current.focus();
             nameInput.current.value = null;
             dateInput.current.value = null;
         }
