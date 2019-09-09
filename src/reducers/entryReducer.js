@@ -15,6 +15,7 @@ export const entryTypes = {
 export const initialEntryState = {
     selected: null,
     entries: [],
+    error: null
 };
 
 export const entryReducer = (state, action) => {
